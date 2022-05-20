@@ -22,29 +22,29 @@ namespace WPFGyak_Tabla
 
         private void Create_Button_Click(object sender, RoutedEventArgs e)
         {
-            Person newPerson = new Person();
-            CreatePersonWindow window = new(newPerson);
-            
-            window.ShowDialog();
-            People.Add(newPerson);
-        }
+            Person person = new();
+            SaveWindow saveWindow = new SaveWindow(person);
 
-        private void Delete_Button_Click(object sender, RoutedEventArgs e)
-        {
-            Person? selectedPerson = dgPeople.SelectedItem as Person;
+            Hide();
+            saveWindow.ShowDialog();
+            Show();
 
-            if (selectedPerson != null)
-                People.Remove(selectedPerson);
+            People.Add(person);
         }
 
         private void Edit_Button_Click(object sender, RoutedEventArgs e)
         {
-            Person? selectedPerson = dgPeople.SelectedItem as Person;
+            SaveWindow saveWindow = new SaveWindow((Person) dgPeople.SelectedItem);
 
-            if (selectedPerson == null) return;
-
-            CreatePersonWindow window = new(selectedPerson);
-            window.ShowDialog();
+            Hide();
+            saveWindow.ShowDialog();
+            Show();
         }
+
+        private void Delete_Button_Click(object sender, RoutedEventArgs e)
+        {
+            People.Remove((Person) dgPeople.SelectedItem);
+        }
+
     }
 }

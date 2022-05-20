@@ -11,6 +11,7 @@
     Height="450" 
     Width="800"
     FontSize="22"
+    WindowStartupLocation="CenterScreen"
     DataContext="{ Binding RelativeSource={ RelativeSource Self } }">
 
     <Grid>
@@ -70,26 +71,13 @@
                     Header="Súly"
                     Binding="{ Binding Weight,
                         StringFormat=\{0:0.0kg\} }"/>
-                
-                <!-- Törlés -->
-                <DataGridTemplateColumn
-                    Header="Törlés">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button
-                                Background="#880000"
-                                Foreground="White"
-                                FontWeight="SemiBold"
-                                Padding="2"
-                                Margin="3"
-                                Click="Delete_Button_Click">
-                                Törlés
-                            </Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
 
-                <!-- Szerkesztés -->
+                <!-- Személy Típusa -->
+                <DataGridTextColumn
+                    Header="Típus"
+                    Binding="{ Binding PersonTypeStr }"/>
+
+                <!--  Szerkesztés  -->
                 <DataGridTemplateColumn
                     Header="Szerkesztés">
                     <DataGridTemplateColumn.CellTemplate>
@@ -97,11 +85,27 @@
                             <Button
                                 Background="#000088"
                                 Foreground="White"
-                                FontWeight="SemiBold"
                                 Padding="2"
                                 Margin="3"
                                 Click="Edit_Button_Click">
                                 Szerkesztés
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <!--  Törlés  -->
+                <DataGridTemplateColumn
+                    Header="Törlés">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                Background="#880000"
+                                Foreground="White"
+                                Padding="2"
+                                Margin="3"
+                                Click="Delete_Button_Click">
+                                Törlés
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

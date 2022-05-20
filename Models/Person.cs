@@ -11,6 +11,7 @@ namespace WPFGyak_Tabla.Models
         private DateTime dateOfBirth;
         private int height;
         private float weight;
+        private PersonType personType;
 
         public Person()
         {
@@ -38,13 +39,13 @@ namespace WPFGyak_Tabla.Models
         public string Firstname 
         { 
             get => firstname; 
-            set { firstname = value; OnPropertyChanged(nameof(Firstname)); }
+            set { firstname = value; OnPropertyChanged(nameof(Fullname)); }
         }
 
         public string Lastname 
         { 
             get => lastname; 
-            set {lastname = value; OnPropertyChanged(nameof(Lastname)); }
+            set {lastname = value; OnPropertyChanged(nameof(Fullname)); }
         }
 
         public DateTime DateOfBirth 
@@ -65,10 +66,22 @@ namespace WPFGyak_Tabla.Models
             set {weight = value; OnPropertyChanged(nameof(Weight)); }
         }
 
+        public PersonType PersonType
+        {
+            get => personType;
+            set { personType = value; OnPropertyChanged(nameof(PersonTypeStr)); }
+        }
+
         public string Fullname => $"{ Lastname } { Firstname }";
 
+        public string PersonTypeStr =>
+            (PersonType == PersonType.TermeszetesSzemely)
+            ? "Természetes személy"
+            : "Jogi személy";
+
         public event PropertyChangedEventHandler? PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string propertyName = "")
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new(propertyName));
         }

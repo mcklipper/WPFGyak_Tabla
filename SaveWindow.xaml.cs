@@ -4,17 +4,14 @@ using WPFGyak_Tabla.Models;
 namespace WPFGyak_Tabla
 {
     /// <summary>
-    /// Interaction logic for CreatePersonWindow.xaml
+    /// Interaction logic for SaveWindow.xaml
     /// </summary>
-    public partial class CreatePersonWindow : Window
+    public partial class SaveWindow : Window
     {
-        private Person person;
-
-        public CreatePersonWindow(Person person)
+        public SaveWindow(Person person)
         {
             InitializeComponent();
             DataContext = person;
-            this.person = person;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
